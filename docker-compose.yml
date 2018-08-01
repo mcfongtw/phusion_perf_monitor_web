@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  build_ubuntu_grafana:
+    build:
+      context: ./
+      args:
+        GRAFANA_VERSION: "latest"
+    image: mcfongtw/ubuntu_perf_monitor_db:latest
+  demo_ubuntu_grafana:
+    image: mcfongtw/ubuntu_perf_monitor_db:latest
+    privileged: true
+    ports:
+      - 3000:3000
+      - 22:22
+    volumes:
+      - $PWD/grafana:/var/lib/grafana
+
+

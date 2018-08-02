@@ -5,15 +5,15 @@ services:
     build:
       context: ./
       args:
-        GRAFANA_VERSION: "latest"
-    image: mcfongtw/ubuntu_perf_monitor_db:latest
+        GRAFANA_VERSION: "5.2.2"
+    image: mcfongtw/ubuntu_perf_monitor_web:5.2.2
   demo_ubuntu_grafana:
-    image: mcfongtw/ubuntu_perf_monitor_db:latest
+    image: mcfongtw/ubuntu_perf_monitor_web:5.2.2
     privileged: true
     ports:
-      - 3000:3000
-      - 22:22
+      - "3000:3000"
     volumes:
       - $PWD/grafana:/var/lib/grafana
+      - $PWD/grafana.ini:/etc/grafana/grafana.ini 
 
 
